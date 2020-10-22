@@ -1,15 +1,18 @@
-# swu-data-sci
+# #AECT20 workshop: Simple Collection and Powerful Analysis of Twitter Data Using R
 
-# Homebase
+Friday, October 30, 2020 
+1pm-4pm EDT
 
-- This website: https://jrosen48.github.io/swu-data-sci/
-- RStudio Cloud (with links to the *demo docs*): https://rstudio.cloud/project/1421785
-- Repository with all files: https://github.com/jrosen48/swu-data-sci
+## Homebase
 
-# Need help? Reach out!
+- Workshop Slides: https://bretsw.github.io/aect20-workshop/
+- RStudio Cloud (with links to the **demo docs**): ____
+- Repository with all files: https://github.com/bretsw/aect20-workshop/
 
-- Ask questions on Google Docs: https://docs.google.com/document/d/1zB3IilyuU0khd10DWQNn44peOkVNI-OLyxRW6WFW5Qw/edit
+## Need help? Reach out!
+
+- Ask questions on Google Docs: ____
 - Ask questions in Zoom chat!
 - Contact:
-  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
-  * [Twitter: jrosenberg6432](https://twitter.com/jrosenberg6432)
+  - [staudtwi@msu.edu](mailto:staudtwi@msu.edu)
+  - [Twitter: @bretsw](https://twitter.com/bretsw)
