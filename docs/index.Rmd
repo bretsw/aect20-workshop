@@ -1,8 +1,10 @@
 ---
-title: "An Introduction to Data Science in Education Using R"
-subtitle: "Southern Wesleyan University, EdD Residency"
-author: "Joshua M. Rosenberg, Ph.D, Assistant Professor, University of Tennessee, Knoxville"
-date: "June 30, 2020"
+title: "Simple Collection and Powerful Analysis of Twitter Data Using R"
+subtitle: "#AECT20 workshop"
+author: "K. Bret Staudt Willet, Ph.D Candidate, Michigan State University;
+  Spencer P. Greenhalgh, Ph.D., Assistant Professor, University of Kentucky;
+  Joshua M. Rosenberg, Ph.D., Assistant Professor, University of Tennessee, Knoxville"
+date: "October 30, 2020"
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +15,7 @@ library(here)
 
 # Homebase
 
-- This website: https://jrosen48.github.io/swu-data-sci/
+- This website: https://bretsw.github.io/aect20-workshop/
 - RStudio Cloud (with links to the *demo docs*): 
   - Part 1: https://rstudio.cloud/project/1421785
   - Part 2: https://rstudio.cloud/project/1427304
