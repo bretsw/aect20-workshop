@@ -1,6 +1,5 @@
 ---
 title: "1-setting-up-demo-doc"
-author: ""
 output: pdf_document
 ---
 
@@ -10,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Loading, setting up 
 
-Let's first load the {dataedu} package and the {tidyverse} suite of packages.
+Let's first load the {tidytags} package and the {tidyverse} suite of packages.
 
 Click the green arrow to the first right of what is a "code chunk" below:
 

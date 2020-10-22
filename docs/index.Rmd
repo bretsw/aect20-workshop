@@ -1,9 +1,7 @@
 ---
 title: "Simple Collection and Powerful Analysis of Twitter Data Using R"
 subtitle: "#AECT20 workshop"
-author: "K. Bret Staudt Willet, Ph.D Candidate, Michigan State University;
-  Spencer P. Greenhalgh, Ph.D., Assistant Professor, University of Kentucky;
-  Joshua M. Rosenberg, Ph.D., Assistant Professor, University of Tennessee, Knoxville"
+author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
 date: "October 30, 2020"
 ---
 
@@ -13,29 +11,25 @@ knitr::opts_chunk$set(echo = TRUE)
 library(here)
 ```
 
-# Homebase
+## Homebase
 
-- This website: https://bretsw.github.io/aect20-workshop/
-- RStudio Cloud (with links to the *demo docs*): 
-  - Part 1: https://rstudio.cloud/project/1421785
-  - Part 2: https://rstudio.cloud/project/1427304
-  - Part 3: https://rstudio.cloud/project/1427304
-  - Part 4: https://rstudio.cloud/project/1427304
-  
-- Repository with all files for today's workshop: https://github.com/jrosen48/swu-data-sci
+- **Website:** https://bretsw.github.io/aect20-workshop/
+- **Repository** with all files for today's workshop: https://github.com/bretsw/aect20-workshop
 
-# Need help?
+## Agenda
 
-- Ask questions on Google Docs: https://docs.google.com/document/d/1zB3IilyuU0khd10DWQNn44peOkVNI-OLyxRW6WFW5Qw/edit
-- Contact me:
-  * [Twitter: jrosenberg6432](https://twitter.com/jrosenberg6432)
-  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
+- Part 1: Setup
+  - Slides: [1 - Setup](1-setup.html)
+  - Demo Doc: https://rstudio.cloud/project/1421785
+- Part 2: Workflow
+  - Slides: [2 - Workflow](2-workflow.html)
+  - Demo Doc: https://rstudio.cloud/project/1427304
+
+## Need help? Reach out!
+
 - Ask questions in Zoom chat!
-- Please reach out *with anything at all*! Learning R is hard at first.
-
-# Slides
-
-- [1 - Setting up](1-setting-up.html)
-- [2 - Data visualization and exploration](2-data-viz-and-data-exploration.html)
-- [3 - Modeling and preparing data](3-modeling-and-preparing.html)
-- [4 - Text analysis and beyond](4-text-analysis-and-beyond.html)
+- Contact:
+  - [staudtwi@msu.edu](mailto:staudtwi@msu.edu)
+  - [Twitter: @bretsw](https://twitter.com/bretsw)
+  - [Twitter: @spgreenhalgh](https://twitter.com/spgreenhalgh)
+  - [Twitter: @jrosenberg6432](https://twitter.com/jrosenberg6432)

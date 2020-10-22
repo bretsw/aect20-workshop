@@ -1,6 +1,5 @@
 ---
-title: "1-setting-up-demo-doc"
-author: ""
+title: "1-setup"
 output: pdf_document
 ---
 

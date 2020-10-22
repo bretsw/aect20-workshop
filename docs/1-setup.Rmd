@@ -1,8 +1,8 @@
 ---
-title: "Part 1: Introductions and Getting Up and Running"
-subtitle: "Southern Wesleyan University, EdD Residency"
-author: "Joshua M. Rosenberg, Ph.D, Assistant Professor, University of Tennessee, Knoxville"
-date: "June 30, 2020"
+title: "Part 1: Introductions and Setup"
+subtitle: "#AECT20 workshop"
+author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
+date: "October 30, 2020"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, custom.css]
@@ -20,8 +20,6 @@ library(knitr)
 library(tidyverse)
 library(xaringan)
 library(dataedu)
-
-joro_years <- round(as.numeric(difftime(as.Date(Sys.Date()), Sys.getenv("joro_bday"), unit="weeks"))/52.25, 1)
 ```
 
 class: inverse, center, middle
@@ -75,7 +73,7 @@ class: inverse, center, middle
 
 # Homebase
 
-*These will appear in every presentation throughout the day today*
+*These will appear in every presentation throughout the workshop*
 
 **All materials here:**
 https://github.com/jrosen48/swu-data-sci
@@ -90,19 +88,7 @@ https://docs.google.com/document/d/1zB3IilyuU0khd10DWQNn44peOkVNI-OLyxRW6WFW5Qw/
 
 ---
 
-# What I learned from your survey responses (thank you!)
-
-- Everyone uses spreadsheet software
-- You're (mostly) confident that you can solve problems with respect to analyzing 
-data, but are less confident with respect to using statistical software
-- Most of you have used data analysis notebooks (RMarkdown?)
-- You have impressive backgrounds and professional experiences
-- For many, programming and using statistics correctly can be intimidating
-- You're a bit more interested in preparing data for analyses than I thought (cool!)
-
----
-
-# Objectives
+# Agenda
 
 By the end of the session, participants will be able to:
 
