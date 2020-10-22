@@ -29,7 +29,8 @@ library(here)
 
 - Ask questions in Zoom chat!
 - Contact:
-  - [staudtwi@msu.edu](mailto:staudtwi@msu.edu)
+  - [Email: staudtwi@msu.edu](mailto:staudtwi@msu.edu)
   - [Twitter: @bretsw](https://twitter.com/bretsw)
   - [Twitter: @spgreenhalgh](https://twitter.com/spgreenhalgh)
   - [Twitter: @jrosenberg6432](https://twitter.com/jrosenberg6432)
+  
