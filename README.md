@@ -5,7 +5,7 @@ Friday, October 30, 2020
 
 ## Homebase
 
-- Workshop Slides: https://bretsw.github.io/aect20-workshop/
+- Workshop Website: https://bretsw.github.io/aect20-workshop/
 - RStudio Cloud (with links to the **demo docs**): ____
 - Repository with all files: https://github.com/bretsw/aect20-workshop/
 
