@@ -73,7 +73,7 @@ The input needed for the `read_tags()` function is either the entire URL from th
 
 Run this code chunk: 
 
-```{r initial-tags, message = FALSE, warning = FALSE}
+```{r}
 tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 
 aect_data <- read_tags(tags_url)
