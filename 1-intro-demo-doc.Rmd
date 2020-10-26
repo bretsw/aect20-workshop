@@ -82,7 +82,7 @@ starwars %>%
          height > 172)
 ```
 
-Perhaps you remember from looking the `starwars` data a moment ago that Luke Skywalker's heights is 172. What, then, can you conclude from the data you've just filtered?
+Perhaps you remember from looking at the `starwars` data a moment ago that Luke Skywalker's height is 172. What, then, can you conclude from the data you've just filtered?
 
 ## Creating a plot with {ggplot2}
 
