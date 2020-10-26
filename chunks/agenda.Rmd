@@ -1,0 +1,6 @@
+- **Part 1: Introduction to R**
+  - Slides: [Part 1 - Setup](1-intro-slides.html)
+  - Demo Doc: [1-intro-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
+- **Part 2: Twitter Research Workflow**
+  - Slides: [Part 2 - Workflow](2-workflow-slides.html)
+  - Demo Doc: [2-workflow-demo-doc.Rmd](https://rstudio.cloud/project/1820768)

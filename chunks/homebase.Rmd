@@ -1,0 +1,4 @@
+- **Website:** https://bretsw.github.io/aect20-workshop
+- **Workspace:** https://rstudio.cloud/project/1820768
+- **Repository** with all files for today's workshop: https://github.com/bretsw/aect20-workshop
+- **{tidytags} Documentation:** https://bretsw.github.io/tidytags

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Part 3: Modeling and Preparing Data</title>
+    <title>Part 2: Twitter Research Workflow</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Joshua M. Rosenberg, Ph.D, Assistant Professor, University of Tennessee, Knoxville" />
-    <meta name="date" content="2020-06-30" />
+    <meta name="author" content="K. Bret Staudt Willet, Spencer P. Greenhalgh, &amp; Joshua M. Rosenberg" />
+    <meta name="date" content="2020-10-30" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
-    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
+    <link rel="stylesheet" href="custom-fonts.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
+class: left, bottom, title-slide
 
-# Part 3: Modeling and Preparing Data
-## Southern Wesleyan University, EdD Residency
-### Joshua M. Rosenberg, Ph.D, Assistant Professor, University of Tennessee, Knoxville
-### June 30, 2020
+# Part 2: Twitter Research Workflow
+## #AECT20 workshop
+### K. Bret Staudt Willet, Spencer P. Greenhalgh, &amp; Joshua M. Rosenberg
+### October 30, 2020
 
 ---
 
@@ -30,162 +30,123 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+# Important Links
 
-# *Big idea*: Linear regression models are a general-purpose tool for analyzing data.
+## Homebase
 
----
 
-# Homebase
+- **Website:** https://bretsw.github.io/aect20-workshop
+- **Workspace:** https://rstudio.cloud/project/1820768
+- **Repository** with all files for today's workshop: https://github.com/bretsw/aect20-workshop
+- **{tidytags} Documentation:** https://bretsw.github.io/tidytags
 
-*These will appear in every presentation throughout the day today*
+## Agenda
 
-**All materials here:**
-https://github.com/jrosen48/swu-data-sci
 
-**RStudio Cloud**
-https://rstudio.cloud/project/1427304
-
-**Ask questions on Google Docs:**
-https://docs.google.com/document/d/1zB3IilyuU0khd10DWQNn44peOkVNI-OLyxRW6WFW5Qw/edit
-
-**Ask questions in Zoom chat!**
-
----
-
-# Agenda
-
-### Part 1: Getting up and running
-### Part 2: Visualizing and exploring data
-### *Part 3: Modeling and understanding data*
-### Part 4: Doing more with data science
+- **Part 1: Introduction to R**
+  - Slides: [Part 1 - Setup](1-intro-slides.html)
+  - Demo Doc: [1-intro-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
+- **Part 2: Twitter Research Workflow**
+  - Slides: [Part 2 - Workflow](2-workflow-slides.html)
+  - Demo Doc: [2-workflow-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
 
 ---
 
-class: inverse, center, middle
-
-# Regression
-
----
-
-# Linear (regression) models
-
-- Think about a linear (regression) model as a way to answer the question: *What is related to some outcome or result I care about?*
-- *Dependent variable*: An outcome or result
-- *Independent variable*: The thing(s) that relate to the outcome or result you crae about
-- Sometimes, a regression with a single dependent variable and a single independent variable is called a single regression, and one with more than one independent variable is called a multiple regression
-
----
-
-# Single regression example
+# Need help? Reach out!
 
 
-```r
-m1 &lt;- lm(FinalGradeCEMS ~ TimeSpent, data = sci_mo_processed)
-summary(m1)
-```
-
-```
-## 
-## Call:
-## lm(formula = FinalGradeCEMS ~ TimeSpent, data = sci_mo_processed)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -67.136  -7.805   4.723  14.471  30.317 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 6.581e+01  1.491e+00   44.13   &lt;2e-16 ***
-## TimeSpent   6.081e-03  6.482e-04    9.38   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 20.71 on 571 degrees of freedom
-##   (30 observations deleted due to missingness)
-## Multiple R-squared:  0.1335,	Adjusted R-squared:  0.132 
-## F-statistic: 87.99 on 1 and 571 DF,  p-value: &lt; 2.2e-16
-```
-
----
-
-# Multiple regression example
-
-Note: int refers to students' interest
-
-
-```r
-m2 &lt;- lm(FinalGradeCEMS ~ TimeSpent + int, data = sci_mo_processed)
-summary(m2)
-```
-
-```
-## 
-## Call:
-## lm(formula = FinalGradeCEMS ~ TimeSpent + int, data = sci_mo_processed)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -66.450  -7.217   4.596  14.404  30.235 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 69.3434025  6.9810987   9.933   &lt;2e-16 ***
-## TimeSpent    0.0061523  0.0006984   8.809   &lt;2e-16 ***
-## int         -0.9643084  1.5822741  -0.609    0.543    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 21.01 on 500 degrees of freedom
-##   (100 observations deleted due to missingness)
-## Multiple R-squared:  0.1373,	Adjusted R-squared:  0.1339 
-## F-statistic:  39.8 on 2 and 500 DF,  p-value: &lt; 2.2e-16
-```
-
----
-
-# Multiple regression example
-
-Dummy-coding is a powerful (but easy in R ) technique; recall
-that subject is a group---a factor
-
-
-```r
-m3 &lt;- lm(FinalGradeCEMS ~ TimeSpent + int + subject, data = sci_mo_processed)
-summary(m3)
-```
+- Ask questions in the Zoom chat!
+- Or, reach out directly:
+  - Email: [staudtwi@msu.edu](mailto:staudtwi@msu.edu)
+  - Twitter: [@bretsw](https://twitter.com/bretsw) | [@spgreenhalgh](https://twitter.com/spgreenhalgh) | [@jrosenberg6432](https://twitter.com/jrosenberg6432)
 
 ---
 
 class: inverse, center, middle
 
-# Try it out! Linear models
+#  {tidytags}
 
-*Let's hop over to the demo doc for part 3!*
+**Simple Collection and Powerful Analysis of Twitter Data**
 
-- `lm()` (for linear model)
-- reading and (especially) writing data
-- multi-level models (leap)
+https://bretsw.github.io/tidytags/
 
 ---
 
-# *Discuss in groups!*
+# Try it out!
 
-- What challenges did you face?
-- What successes did you face?
+Let's hop over to the **Demo Doc for Part 2**!
+
+- [Working in RStudio Cloud](https://rstudio.cloud/project/1820768)
+- [Working locally](2-workflow-demo-doc.Rmd)
+
+---
+
+class: inverse, center, middle
+
+# Discuss in groups!
+
+**(Five minutes in groups, five minutes together)**
+
+- What challenges did you encounter?
+- What successes did you encounter?
 - What questions do you still have?
 
 ---
 
 class: inverse, center, middle
 
-# *Big idea*: Linear regression models are a general-purpose tool for analyzing data.
+# THANK YOU!
 
 ---
 
-class: inverse, center, middle
+# Stay Connected
 
-# *Next*: Text analysis and beyond
+### Bret Staudt Willet, ABD
+
+- Ph.D. Candidate, Educational Psychology &amp; Educational Technology, Michigan State University
+- http://bretsw.com
+- Twitter: [@bretsw](https://twitter.com/bretsw)
+
+### Spencer Greenhalgh, Ph.D.
+
+- Assistant Professor, Information Communication Technology, University of Kentucky
+- https://spencergreenhalgh.com
+- Twitter:[@spgreenhalgh](https://twitter.com/spgreenhalgh)
+
+### Josh Rosenberg, Ph.D.
+
+- Assistant Professor, STEM Education, University of Tennessee, Knoxville
+- https://joshuamrosenberg.com
+- Twitter: [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+
+---
+
+# Resources
+
+
+- {tidytags} package notes: https://bretsw.github.io/tidytags/
+- [Beginners' Guide from RStudio](https://education.rstudio.com/learn/beginner/)
+- Book: [*R for Data Science*](http://r4ds.had.co.nz/)
+- Book: [*Data Science in Education Using R*](https://datascienceineducation.com)
+  - [Physical copy of DSIEUR](https://www.routledge.com/Data-Science-in-Education-Using-R/Estrellado-Freer-Mostipak-Rosenberg-Velasquez/p/book/9780367422257)
+  - [Even more resources from DSIEUR](https://datascienceineducation.com/c18.html)
+- Book: [*Learning Statistics with R*](https://learningstatisticswithr.com/)
+
+---
+
+# Troubleshooting
+
+
+- Try to find out what the specific problem is
+  -  Identify what is *not* causing the problem
+- "Unplug and plug it back in" - restart R, close and reopen R
+- Consider using RStudio Cloud
+- Seek out workshops and other learning opportunities
+- Reach out to others! Sharing what is causing an issue can often help to clarify the problem
+  - RStudio Community - https://community.rstudio.com/ (highly recommended!)
+  - Twitter hashtag: #rstats
+  - Contact Bret, Spencer, and Josh!
+- General strategies on learning more: https://datascienceineducation.com/c17.html
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

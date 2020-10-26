@@ -1,0 +1,313 @@
+---
+title: "Part 1: Introduction to R"
+subtitle: "#AECT20 workshop"
+author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
+date: "October 30, 2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    seal: true
+    css: [default, 'custom.css', 'custom-fonts.css']
+    nature:
+      titleSlideClass: [left, bottom]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(knitr)
+library(tidyverse)
+library(xaringan)
+```
+
+class: inverse, center, middle
+
+# Welcome & Introductions
+
+---
+
+# Meet Your Instructors!
+
+### Bret Staudt Willet, ABD
+
+- Ph.D. Candidate, Educational Psychology & Educational Technology, Michigan State University
+- http://bretsw.com
+- Twitter: [@bretsw](https://twitter.com/bretsw)
+
+--
+
+### Spencer Greenhalgh, Ph.D.
+
+- Assistant Professor, Information Communication Technology, University of Kentucky
+- https://spencergreenhalgh.com
+- Twitter:[@spgreenhalgh](https://twitter.com/spgreenhalgh)
+
+--
+
+### Josh Rosenberg, Ph.D.
+
+- Assistant Professor, STEM Education, University of Tennessee, Knoxville
+- https://joshuamrosenberg.com
+- Twitter: [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+
+---
+
+# Meet Your Co-conspirators!
+
+## https://padlet.com/bretsw/aect20workshop
+
+```{r, out.width = "560", echo = FALSE, fig.align = "center"}
+include_graphics("img/hello.jpg")
+```
+
+---
+
+class: inverse, center, middle
+
+# Session Information
+
+---
+
+# Important Links
+
+## Homebase
+
+```{r child="chunks/homebase.Rmd"} 
+```
+
+## Agenda
+
+```{r child="chunks/agenda.Rmd"} 
+```
+
+---
+
+# Need help? Reach out!
+
+```{r child="chunks/help-slides.Rmd"} 
+```
+
+---
+
+# Our Constructivist  Approach
+
+--
+
+1. We'll introduce some concepts
+1. You'll try some code
+1. We'll all discuss together
+
+--
+
+```{r, out.width = "360", echo = FALSE, fig.align = "center"}
+include_graphics("img/tech_support_cheat_sheet.png")
+```
+
+---
+
+class: inverse, center, middle
+
+# Background on R and RStudio
+
+---
+
+# Why learn R?
+
+--
+
+- It is increasingly used in education
+
+--
+
+- It is cross-platform, open-source, and freely-available
+
+--
+
+- It is a programming language and quite flexible
+
+--
+
+- It is capable of carrying out basic and complex statistical analyses
+
+--
+
+- It is able to work with data small (*n* = 10) and large (*n* = 1,000,000+) efficiently
+
+--
+
+- There is a great, inclusive community of users and developers
+
+---
+
+
+class: inverse, center, middle
+
+# Where You'll Be Running R
+
+RStudio Cloud (preferred)  
+OR  
+R + RStudio locally on your computer  
+
+---
+
+# Option 1: RStudio Cloud
+
+[`Workshop Project Space in RStudio Cloud`](https://rstudio.cloud/project/1820768)
+- Link also here: https://rstudio.cloud/project/1820768
+
+--
+
+- Once you have navigated to this webpage, log in using a Google or GitHub account. 
+
+--
+
+- Then, create a permanent copy of the project in your own workspace (see the prompt at the top of the page guiding you to do this).
+
+--
+
+- From here, you can write and run R code exactly as your would through RStudio on your computer.
+
+---
+
+# Option 2: R + RStudio Locally
+
+### To download R
+
+- Visit [**cran.r-project.org**](https://cran.r-project.org/) to download R
+- Find your operating system (Mac, Windows, or Linux)
+- Download the 'latest release' on the page for your operating system and download and install the application
+
+### To download RStudio
+
+- Visit [**rstudio.com**](https://rstudio.com/products/rstudio/download/) to download RStudio
+- Find your operating system (Mac, Windows, or Linux)
+- Download the 'latest release' on the page for your operating system and download and install the application
+
+---
+
+class: inverse, center, middle
+
+# Try it out! 
+
+---
+
+# Getting started with RStudio
+
+Activities:  
+
+1. Running a single RMarkdown chunk  
+1. Running another RMarkdown chunk  
+1. Rendering an RMarkdown document to a PDF  
+1. Creating your first visualization
+
+---
+
+# RMarkdown
+
+* RMarkdown is a data analysis "notebook" that combines text with code and output
+* It is a great file type to use when beginning to use R and to create reproducible analyses
+* It is fun to use because you can generate different types of output (Word, PDF, and even web-based)
+
+---
+
+# Looking at code
+
+What do you think this code will do?
+
+```{r, eval = FALSE}
+starwars %>% 
+  filter(sex == "female") %>% 
+  select(name, hair_color, skin_color, homeworld)
+```
+
+---
+
+# Looking at code
+
+Let's see!
+
+```{r, eval = TRUE}
+starwars %>% 
+  filter(sex == "female") %>% 
+  select(name, hair_color, skin_color, homeworld)
+```
+
+---
+
+# Looking at code
+
+What do you think this code will do?
+
+```{r, eval = FALSE}
+starwars %>% 
+  filter(sex %in% c("male", "none"),
+         height <= 150) %>% 
+  arrange(desc(height)) %>%
+  select(name, sex, height, mass, homeworld)
+```
+
+---
+
+# Looking at code
+
+Let's see!
+
+```{r, eval = TRUE}
+starwars %>% 
+  filter(sex %in% c("male", "none"),
+         height <= 150) %>% 
+  arrange(desc(height)) %>%
+  select(name, sex, height, mass, homeworld)
+```
+
+---
+
+# Run a single RMarkdown chunk 
+
+Let's hop over to the **Demo Doc for Part 1**!
+
+- [Working in RStudio Cloud](https://rstudio.cloud/project/1820768)
+- [Working locally](1-intro-demo-doc.Rmd)
+
+---
+
+class: inverse, center, middle
+
+# Discuss in groups!
+
+**(Five minutes in groups, five minutes together)**
+
+- What challenges did you encounter?
+- What successes did you encounter?
+- What questions do you still have?
+
+---
+
+class: inverse, center, middle
+
+# *Next up*: Part 2: Twitter Research Workflow
+
+[`Part 2 slide deck here`](2-workflow-slides.html)
+
+---
+
+class: inverse, center, middle
+
+# Appendix: Helpful Resources and Troubleshooting
+
+---
+
+# Resources
+
+```{r child="chunks/resources.Rmd"} 
+```
+
+---
+
+# Troubleshooting
+
+```{r child="chunks/troubleshooting.Rmd"} 
+```

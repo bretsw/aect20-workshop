@@ -1,0 +1,7 @@
+- {tidytags} package notes: https://bretsw.github.io/tidytags/
+- [Beginners' Guide from RStudio](https://education.rstudio.com/learn/beginner/)
+- Book: [*R for Data Science*](http://r4ds.had.co.nz/)
+- Book: [*Data Science in Education Using R*](https://datascienceineducation.com)
+  - [Physical copy of DSIEUR](https://www.routledge.com/Data-Science-in-Education-Using-R/Estrellado-Freer-Mostipak-Rosenberg-Velasquez/p/book/9780367422257)
+  - [Even more resources from DSIEUR](https://datascienceineducation.com/c18.html)
+- Book: [*Learning Statistics with R*](https://learningstatisticswithr.com/)

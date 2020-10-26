@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%",
+  message = FALSE
+)
+```
+
+# #AECT20 workshop: Simple Collection and Powerful Analysis of Twitter Data Using R
+
+K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg
+
+Friday, October 30, 2020 
+
+1pm-4pm EDT
+
+```{r, out.width = "840", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/construction.jpg")
+```
+
+## Homebase
+
+```{r child="chunks/homebase.Rmd"} 
+```
+
+## Agenda
+
+```{r child="chunks/agenda.Rmd"} 
+```
+
+## Need help? Reach out!
+
+```{r child="chunks/help.Rmd"} 
+```
+
+## Workshop Description
+
+```{r child="chunks/abstract.Rmd"} 
+```

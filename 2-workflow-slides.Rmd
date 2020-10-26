@@ -1,0 +1,122 @@
+---
+title: "Part 2: Twitter Research Workflow"
+subtitle: "#AECT20 workshop"
+author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
+date: "October 30, 2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    seal: true
+    css: [default, 'custom.css', 'custom-fonts.css']
+    nature:
+      titleSlideClass: [left, bottom]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(knitr)
+library(xaringan)
+library(tidyverse)
+```
+
+class: inverse, center, middle
+
+# Welcome back!
+
+---
+
+# Important Links
+
+## Homebase
+
+```{r child="chunks/homebase.Rmd"} 
+```
+
+## Agenda
+
+```{r child="chunks/agenda.Rmd"} 
+```
+
+---
+
+# Need help? Reach out!
+
+```{r child="chunks/help-slides.Rmd"} 
+```
+
+---
+
+class: inverse, center, middle
+
+#  {tidytags}
+
+**Simple Collection and Powerful Analysis of Twitter Data**
+
+https://bretsw.github.io/tidytags/
+
+---
+
+# Try it out!
+
+Let's hop over to the **Demo Doc for Part 2**!
+
+- [Working in RStudio Cloud](https://rstudio.cloud/project/1820768)
+- [Working locally](2-workflow-demo-doc.Rmd)
+
+---
+
+class: inverse, center, middle
+
+# Discuss in groups!
+
+**(Five minutes in groups, five minutes together)**
+
+- What challenges did you encounter?
+- What successes did you encounter?
+- What questions do you still have?
+
+---
+
+class: inverse, center, middle
+
+# THANK YOU!
+
+---
+
+# Stay Connected
+
+### Bret Staudt Willet, ABD
+
+- Ph.D. Candidate, Educational Psychology & Educational Technology, Michigan State University
+- http://bretsw.com
+- Twitter: [@bretsw](https://twitter.com/bretsw)
+
+### Spencer Greenhalgh, Ph.D.
+
+- Assistant Professor, Information Communication Technology, University of Kentucky
+- https://spencergreenhalgh.com
+- Twitter:[@spgreenhalgh](https://twitter.com/spgreenhalgh)
+
+### Josh Rosenberg, Ph.D.
+
+- Assistant Professor, STEM Education, University of Tennessee, Knoxville
+- https://joshuamrosenberg.com
+- Twitter: [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+
+---
+
+# Resources
+
+```{r child="chunks/resources.Rmd"} 
+```
+
+---
+
+# Troubleshooting
+
+```{r child="chunks/troubleshooting.Rmd"} 
+```

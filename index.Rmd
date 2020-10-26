@@ -1,0 +1,34 @@
+---
+title: "Simple Collection and Powerful Analysis of Twitter Data Using R"
+subtitle: "#AECT20 workshop"
+author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
+date: "October 30, 2020"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, out.width = "840", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/construction.jpg")
+```
+
+## Homebase
+
+```{r child="chunks/homebase.Rmd"} 
+```
+
+## Agenda
+
+```{r child="chunks/agenda.Rmd"} 
+```
+
+## Need help? Reach out!
+
+```{r child="chunks/help.Rmd"} 
+```
+
+## Workshop Description
+
+```{r child="chunks/abstract.Rmd"} 
+```

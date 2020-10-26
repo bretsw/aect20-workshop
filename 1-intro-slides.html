@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Part 1: Introduction to R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="K. Bret Staudt Willet, Spencer P. Greenhalgh, &amp; Joshua M. Rosenberg" />
+    <meta name="date" content="2020-10-30" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+    <link rel="stylesheet" href="custom-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, bottom, title-slide
+
+# Part 1: Introduction to R
+## #AECT20 workshop
+### K. Bret Staudt Willet, Spencer P. Greenhalgh, &amp; Joshua M. Rosenberg
+### October 30, 2020
+
+---
+
+
+
+
+class: inverse, center, middle
+
+# Welcome &amp; Introductions
+
+---
+
+# Meet Your Instructors!
+
+### Bret Staudt Willet, ABD
+
+- Ph.D. Candidate, Educational Psychology &amp; Educational Technology, Michigan State University
+- http://bretsw.com
+- Twitter: [@bretsw](https://twitter.com/bretsw)
+
+--
+
+### Spencer Greenhalgh, Ph.D.
+
+- Assistant Professor, Information Communication Technology, University of Kentucky
+- https://spencergreenhalgh.com
+- Twitter:[@spgreenhalgh](https://twitter.com/spgreenhalgh)
+
+--
+
+### Josh Rosenberg, Ph.D.
+
+- Assistant Professor, STEM Education, University of Tennessee, Knoxville
+- https://joshuamrosenberg.com
+- Twitter: [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+
+---
+
+# Meet Your Co-conspirators!
+
+## https://padlet.com/bretsw/aect20workshop
+
+&lt;img src="img/hello.jpg" width="560" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Session Information
+
+---
+
+# Important Links
+
+## Homebase
+
+
+- **Website:** https://bretsw.github.io/aect20-workshop
+- **Workspace:** https://rstudio.cloud/project/1820768
+- **Repository** with all files for today's workshop: https://github.com/bretsw/aect20-workshop
+- **{tidytags} Documentation:** https://bretsw.github.io/tidytags
+
+## Agenda
+
+
+- **Part 1: Introduction to R**
+  - Slides: [Part 1 - Setup](1-intro-slides.html)
+  - Demo Doc: [1-intro-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
+- **Part 2: Twitter Research Workflow**
+  - Slides: [Part 2 - Workflow](2-workflow-slides.html)
+  - Demo Doc: [2-workflow-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
+
+---
+
+# Need help? Reach out!
+
+
+- Ask questions in the Zoom chat!
+- Or, reach out directly:
+  - Email: [staudtwi@msu.edu](mailto:staudtwi@msu.edu)
+  - Twitter: [@bretsw](https://twitter.com/bretsw) | [@spgreenhalgh](https://twitter.com/spgreenhalgh) | [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+
+---
+
+# Our Constructivist  Approach
+
+--
+
+1. We'll introduce some concepts
+1. You'll try some code
+1. We'll all discuss together
+
+--
+
+&lt;img src="img/tech_support_cheat_sheet.png" width="360" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Background on R and RStudio
+
+---
+
+# Why learn R?
+
+--
+
+- It is increasingly used in education
+
+--
+
+- It is cross-platform, open-source, and freely-available
+
+--
+
+- It is a programming language and quite flexible
+
+--
+
+- It is capable of carrying out basic and complex statistical analyses
+
+--
+
+- It is able to work with data small (*n* = 10) and large (*n* = 1,000,000+) efficiently
+
+--
+
+- There is a great, inclusive community of users and developers
+
+---
+
+
+class: inverse, center, middle
+
+# Where You'll Be Running R
+
+RStudio Cloud (preferred)  
+OR  
+R + RStudio locally on your computer  
+
+---
+
+# Option 1: RStudio Cloud
+
+[`Workshop Project Space in RStudio Cloud`](https://rstudio.cloud/project/1820768)
+- Link also here: https://rstudio.cloud/project/1820768
+
+--
+
+- Once you have navigated to this webpage, log in using a Google or GitHub account. 
+
+--
+
+- Then, create a permanent copy of the project in your own workspace (see the prompt at the top of the page guiding you to do this).
+
+--
+
+- From here, you can write and run R code exactly as your would through RStudio on your computer.
+
+---
+
+# Option 2: R + RStudio Locally
+
+### To download R
+
+- Visit [**cran.r-project.org**](https://cran.r-project.org/) to download R
+- Find your operating system (Mac, Windows, or Linux)
+- Download the 'latest release' on the page for your operating system and download and install the application
+
+### To download RStudio
+
+- Visit [**rstudio.com**](https://rstudio.com/products/rstudio/download/) to download RStudio
+- Find your operating system (Mac, Windows, or Linux)
+- Download the 'latest release' on the page for your operating system and download and install the application
+
+---
+
+class: inverse, center, middle
+
+# Try it out! 
+
+---
+
+# Getting started with RStudio
+
+Activities:  
+
+1. Running a single RMarkdown chunk  
+1. Running another RMarkdown chunk  
+1. Rendering an RMarkdown document to a PDF  
+1. Creating your first visualization
+
+---
+
+# RMarkdown
+
+* RMarkdown is a data analysis "notebook" that combines text with code and output
+* It is a great file type to use when beginning to use R and to create reproducible analyses
+* It is fun to use because you can generate different types of output (Word, PDF, and even web-based)
+
+---
+
+# Looking at code
+
+What do you think this code will do?
+
+
+```r
+starwars %&gt;% 
+  filter(sex == "female") %&gt;% 
+  select(name, hair_color, skin_color, homeworld)
+```
+
+---
+
+# Looking at code
+
+Let's see!
+
+
+```r
+starwars %&gt;% 
+  filter(sex == "female") %&gt;% 
+  select(name, hair_color, skin_color, homeworld)
+```
+
+```
+## # A tibble: 16 x 4
+##    name               hair_color skin_color          homeworld
+##    &lt;chr&gt;              &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;    
+##  1 Leia Organa        brown      light               Alderaan 
+##  2 Beru Whitesun lars brown      light               Tatooine 
+##  3 Mon Mothma         auburn     fair                Chandrila
+##  4 Shmi Skywalker     black      fair                Tatooine 
+##  5 Ayla Secura        none       blue                Ryloth   
+##  6 Adi Gallia         none       dark                Coruscant
+##  7 Cordé              brown      light               Naboo    
+##  8 Luminara Unduli    black      yellow              Mirial   
+##  9 Barriss Offee      black      yellow              Mirial   
+## 10 Dormé              brown      light               Naboo    
+## 11 Zam Wesell         blonde     fair, green, yellow Zolan    
+## 12 Taun We            none       grey                Kamino   
+## 13 Jocasta Nu         white      fair                Coruscant
+## 14 Shaak Ti           none       red, blue, white    Shili    
+## 15 Rey                brown      light               &lt;NA&gt;     
+## 16 Padmé Amidala      brown      light               Naboo
+```
+
+---
+
+# Looking at code
+
+What do you think this code will do?
+
+
+```r
+starwars %&gt;% 
+  filter(sex %in% c("male", "none"),
+         height &lt;= 150) %&gt;% 
+  arrange(desc(height)) %&gt;%
+  select(name, sex, height, mass, homeworld)
+```
+
+---
+
+# Looking at code
+
+Let's see!
+
+
+```r
+starwars %&gt;% 
+  filter(sex %in% c("male", "none"),
+         height &lt;= 150) %&gt;% 
+  arrange(desc(height)) %&gt;%
+  select(name, sex, height, mass, homeworld)
+```
+
+```
+## # A tibble: 10 x 5
+##    name                  sex   height  mass homeworld  
+##    &lt;chr&gt;                 &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      
+##  1 Watto                 male     137    NA Toydaria   
+##  2 Gasgano               male     122    NA Troiken    
+##  3 Sebulba               male     112    40 Malastare  
+##  4 R5-D4                 none      97    32 Tatooine   
+##  5 R2-D2                 none      96    32 Naboo      
+##  6 R4-P17                none      96    NA &lt;NA&gt;       
+##  7 Dud Bolt              male      94    45 Vulpter    
+##  8 Wicket Systri Warrick male      88    20 Endor      
+##  9 Ratts Tyerell         male      79    15 Aleen Minor
+## 10 Yoda                  male      66    17 &lt;NA&gt;
+```
+
+---
+
+# Run a single RMarkdown chunk 
+
+Let's hop over to the **Demo Doc for Part 1**!
+
+- [Working in RStudio Cloud](https://rstudio.cloud/project/1820768)
+- [Working locally](1-intro-demo-doc.Rmd)
+
+---
+
+class: inverse, center, middle
+
+# Discuss in groups!
+
+**(Five minutes in groups, five minutes together)**
+
+- What challenges did you encounter?
+- What successes did you encounter?
+- What questions do you still have?
+
+---
+
+class: inverse, center, middle
+
+# *Next up*: Part 2: Twitter Research Workflow
+
+[`Part 2 slide deck here`](2-workflow-slides.html)
+
+---
+
+class: inverse, center, middle
+
+# Appendix: Helpful Resources and Troubleshooting
+
+---
+
+# Resources
+
+
+- {tidytags} package notes: https://bretsw.github.io/tidytags/
+- [Beginners' Guide from RStudio](https://education.rstudio.com/learn/beginner/)
+- Book: [*R for Data Science*](http://r4ds.had.co.nz/)
+- Book: [*Data Science in Education Using R*](https://datascienceineducation.com)
+  - [Physical copy of DSIEUR](https://www.routledge.com/Data-Science-in-Education-Using-R/Estrellado-Freer-Mostipak-Rosenberg-Velasquez/p/book/9780367422257)
+  - [Even more resources from DSIEUR](https://datascienceineducation.com/c18.html)
+- Book: [*Learning Statistics with R*](https://learningstatisticswithr.com/)
+
+---
+
+# Troubleshooting
+
+
+- Try to find out what the specific problem is
+  -  Identify what is *not* causing the problem
+- "Unplug and plug it back in" - restart R, close and reopen R
+- Consider using RStudio Cloud
+- Seek out workshops and other learning opportunities
+- Reach out to others! Sharing what is causing an issue can often help to clarify the problem
+  - RStudio Community - https://community.rstudio.com/ (highly recommended!)
+  - Twitter hashtag: #rstats
+  - Contact Bret, Spencer, and Josh!
+- General strategies on learning more: https://datascienceineducation.com/c17.html
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

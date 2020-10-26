@@ -1,0 +1,325 @@
+---
+title: "Part 2: Twitter Research Workflow - Demo Doc"
+author: 
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading, setting up 
+
+Do you remember how to get started? 
+
+Let's first load the {tidytags} package and the {tidyverse} suite of packages.
+
+Load the required packages by clicking the green arrow again:
+
+```{r, message=FALSE}
+if (!require(tidyverse)) install.packages('tidyverse')
+library(tidyverse)
+
+if (!require(devtools)) install.packages('devtools')
+if (!require(tidytags)) devtools::install_github("bretsw/tidytags")
+library(tidytags)
+
+if (!require(mapview)) install.packages('mapview')
+library(mapview)
+
+if (!require(tidygraph)) install.packages('tidygraph')
+library(tidygraph)
+
+if (!require(ggraph)) install.packages('ggraph')
+library(ggraph)
+```
+
+---
+
+## Ethical considerations
+
+Before we dig in, we wanted to take a few moments to discuss ethical considerations related to social media research.
+
+```{r child="chunks/ethics.Rmd"} 
+```
+
+---
+
+## Exploring {tidytags}
+
+**To get set up to use {tidytags}, read carefully through the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.**
+
+### Check out Twitter Archiving Google Sheets
+
+A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). 
+
+For help setting up your own TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #1**.
+
+### Look at an #AECT19 TAGS tracker
+
+In this demo doc, we will analyze a TAGS tracker that has been collecting tweets associated with the [Association for Educational Communications & Technology](https://aect.org/) (AECT) 2019 convention since September 30, 2019. 
+
+As of October 25, 2020, this tracker had collected **2,564 tweets**. This tracker is still active today.
+
+[Take a look at this #AECT19 TAGS tracker now!](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8)
+
+Notice that this TAGS tracker is collecting tweets containing three different hashtags: `#aect19`, `#aect2019`, or `#aect19inspired`.
+
+### View a TAGS tracker in R
+
+To simply view a TAGS archive in R, you can use `read_tags()`. 
+
+The input needed for the `read_tags()` function is either the entire URL from the top of the web browser with a TAGS tracker open, or a Google Sheet identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL). Be sure to put quotations marks around the URL or sheet identifier when entering it into `read_tags()` function.
+
+Run this code chunk: 
+
+```{r initial-tags, message = FALSE, warning = FALSE}
+tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+
+aect_data <- read_tags(tags_url)
+dim(aect_data)
+```
+
+The `dim()` gives the dimensions of the TAGS data. The first number is how many rows (i.e., tweets) and the second number is how many variables associated with these tweets.
+
+**Note that there are alternate ways to access TAGS files.** One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to `File -> Download -> Comma-separated values (CSV)` to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R. 
+
+We won't run this next code chunk because it is just an example (notice that we set `eval = FALSE`).
+
+```{r, eval=FALSE}
+aect_data <- readr::read_csv("my-downloaded-tags-file.csv")
+```
+
+### Get more information about these tweets
+
+With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses queries the Twitter API and requires Twitter developer keys.
+
+For help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #2**.
+
+Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `pull_tweet_data()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).
+
+Here, we demonstrate two different ways of using `pull_tweet_data()`. The first method is to query the Twitter API with the tweet ID numbers from the `id_str` column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable `aect_data_plus_A` below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL `https://twitter.com/tweet__example/status/1176592704647716864` has a tweet ID of `1176592704647716864`. The results of this second method are stored in the variable `aect_data_plus_B` below.
+
+```{r}
+aect_data_plus_A <- pull_tweet_data(id_vector = aect_data$id_str)
+aect_data_plus_B <- pull_tweet_data(url_vector = aect_data$status_url)
+```
+
+The R function for determining the number of rows in a dataset is `nrow()`. Use this funcction to compare the number of rows in `aect_data`, `aect_data_plus_A`, and `aect_data_plus_B`
+
+```{r}
+nrow(); nrow(); nrow() 
+```
+
+What does this tell you about the number of tweets?
+
+Remember that a key advantage to {tidytags} is using `pull_tweet_data()` to gather quite a bit more information about tweets than is available through a TAGS tracker alone. So, let's compare. 
+
+`names()` lists all the variables are in a dataset, and this can be combined with `length()` to count how many variables. Try comparing the number of variables in the TAGS data (`aect_data`) and the new data (`aect_data_plus_A`). 
+
+```{r}
+length(names()); length(names())
+```
+
+How much new information do we have about each tweet?
+
+The built-in default of `pull_tweet_data()` is to simply enter the dataset retrieved from  `read_tags()` and implement method B, retieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(tags_url))`. This can also be constructed in a more readable form using "pipes": 
+
+```{r}
+aect_data_plus <- tags_url %>% read_tags() %>% pull_tweet_data()
+```
+
+Now let's take a quick look at the result, using the `glimpse()` function from the {dplyr} package (loaded as part of the {tidyverse}.
+
+```{r}
+glimpse(aect_data_plus)
+```
+
+At this point, the purpose of {tidytags} should be restated. TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone. For instance, an {rtweet} search run on February 24, 2020 returned only three tweets.
+
+Let's see how many #AECT19 tweets we can get today:
+
+```{r}
+rtweet_today <- rtweet::search_tweets("#aect19 OR #aect2019 OR #aect19inspired", n = 18000)
+nrow(rtweet_today)
+```
+
+In sum, although a TAGS tracker is powerful for easily collecting tweets over time (**breadth*)**, it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns much more **depth**, with information on up to 90 variables. 
+
+{tidytags} brings together the breadth of TAGS with the depth of {rtweet}.
+
+### Calculate additional tweet attributes
+
+After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDs, the {tidytags} function `process_tweets()` can be used to calculate additional attributes and add these to the dataframe as new columns. S
+
+pecifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This results in 100 variables associated with the collected tweets.
+
+```{r}
+aect_data_processed <- process_tweets(aect_data_plus)
+dim(aect_data_processed)
+```
+
+At this point, depending on your research questions, you may wish to calculate some descriptive statistics associated with this tweet data. For instance the mean number of characters per tweet (`character_count`).
+
+Can you construct this command using `mean()`?
+
+```{r}
+aect_data_processed$character_count %>% 
+```
+
+Or, how about the mean `mean()`, standard deviation `sd()`, median `median()`, and max `max()` number of hashtags per tweet (`hashtags_count_regex`)?
+
+```{r}
+aect_data_processed$hashtags_count_regex %>% 
+```
+
+### Look at what links are being tweeted
+
+The {tidytags} function `get_url_domain()` returns the domain names of any hyperlinks including in tweets.
+
+`get_url_domain()` works with regular URLS like "https://www.aect.org/about_us.php" and  shortened URLs like "http://bit.ly/2SfWO3K".
+
+```{r}
+get_url_domain("https://www.aect.org/about_us.php")
+get_url_domain("http://bit.ly/2SfWO3K")
+```
+
+It may also be of interest to examine which websites get linked to most often in your dataset. `get_url_domain()` can be combined with a function from base R like `table()` to calculate frequency counts for domains present in the dataset. This process is useful to get a picture of to where else on the Internet tweeters are directing their readers' attention.
+
+Keep in mind, however, that this process is a bit slow because it is dependent on Internet bandwidth.
+
+```{r, message = FALSE, warning = FALSE}
+example_urls <- 
+  aect_data_processed$urls_url %>%
+  purrr::flatten_chr()
+example_urls <- example_urls[!is.na(example_urls)] # Remove NA values
+
+domains <- example_urls %>%
+  get_url_domain() %>%
+  table() %>%
+  as_tibble() 
+```
+
+See how long this takes!
+
+Now, let's look at the domains included in tweets. What do you think this code will do?
+
+```{r}
+domains %>%
+  arrange(desc(n)) %>%
+  head(20)
+```
+
+What do you notice about the most common domains in our dataset?
+
+### Look at the geolocation of tweeters
+
+Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). {tidytags} makes this straightforward with the `geocode_tags()` function. Note that `geocode_tags()` should be used after additional metadata has been retrieved with `tidytags::pull_tweet_data()`.
+
+`geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. For help getting a key, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #3**.
+
+First, we identify the unique tweeter locations in the dataset. 
+
+What do you think the `.keep_all=TRUE` parameter does?
+
+```{r}
+aect_places <- 
+  aect_data_processed %>%
+  distinct(location, .keep_all = TRUE)
+```
+
+How do you think you would look at these locations? Try using a `$`, which lets you look at single column in a dataset.
+
+```{r}
+aect_places$location
+```
+
+There is an equivalent to do this in the tidyverse: the `pull()` function. How would you finish this script using `pull()`?
+
+```{r}
+aect_places %>% 
+```
+
+Now we need to geocode these locations (`aect_places`) with the `geocode_tags()` function, which takes a tibble and outputs a vector of geo-coordinates.
+
+See if you can write the code to do this, saving the result to `aect_geo_coords`.
+
+```{r}
+aect_geo_coords <- geocode_tags()
+```
+
+Finally, it's easy to visualize the data using the `mapview()` function from the {mapview} package. Try it out!
+
+```{r}
+mapview()
+```
+
+### Creating an edgelist
+
+Getting started with *social network analysis* is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. 
+
+An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else: namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` takes into account these four different types of interaction.
+
+Try writing the code to do this, saving the result to `aect_edgelist`:
+
+```{r}
+
+```
+
+Let's look at the first 20 rows of our edgelist:
+
+```{r}
+aect_edgelist %>% head(20)
+```
+
+### Looking at types of tweets
+
+Running `create_edgelist()` also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the `count()` function from {dplyr}.
+
+```{r edge-table}
+aect_edgelist %>% count(edge_type, sort = TRUE)
+```
+
+### Looking at social networks
+
+We can then easily visualize the edgelist as a sociogram using {tidygraph} and {ggraph}. 
+
+First, create a graph object using {tidygraph}:
+
+```{r}
+aect_graph <- 
+  aect_edgelist %>%
+  tidygraph::as_tbl_graph() %>% 
+  mutate(Popularity = tidygraph::centrality_degree(mode = 'in'))
+```
+
+Next, create a network visualization using {ggraph}. What do you think each line of this code does?
+
+```{r}
+aect_graph %>%
+  ggraph(layout = 'fr') + 
+  geom_edge_arc(alpha = .3, 
+                width = .5, 
+                strength = .3) +
+  geom_node_point(alpha = .2, 
+                  aes(size = Popularity),
+                  show.legend = FALSE) +
+  theme_void()
+```
+
+Now, what if we only want a visualization of replies?
+
+```{r}
+aect_edgelist %>%
+  filter(edge_type == "reply") %>%
+  tidygraph::as_tbl_graph() %>% 
+  mutate(Popularity = tidygraph::centrality_degree(mode = 'in'))  %>%
+  ggraph(layout = 'fr') + 
+  geom_edge_arc(alpha = .3, 
+                width = .5, 
+                strength = .3) +
+  geom_node_point(alpha = .2, 
+                  aes(size = Popularity),
+                  show.legend = FALSE) +
+  theme_void()
+```

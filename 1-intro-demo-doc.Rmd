@@ -1,0 +1,133 @@
+---
+title: "Part 1: Introduction to R - Demo Doc"
+author: 
+output: pdf_document
+---
+
+## Loading, setting up 
+
+To get started, let's load the {tidytags} package. Click the green arrow at the top right of the "code chunk" below:
+
+```{r setup, include=FALSE}
+if (!require(tidyverse)) install.packages('tidyverse')
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Let's see if we can work with one of the datasets included with the {tidyverse}. Click the green arrow at the top right of the "code chunk" below:
+
+```{r}
+starwars %>% 
+  ggplot(aes(x = height)) +
+  geom_density()
+```
+
+If you saw a plot, congratulations! Things are working just fine.
+
+Reflect for a moment: **What do you notice about this plot? What do you wonder?**
+
+Now, let's look at the full dataset we will use: descriptions of *Star Wars* characters. Click the green arrow again.
+
+```{r}
+starwars
+```
+
+## Selecting variables
+
+Let's `select` (i.e., look at) only a few variables that we're interested in.
+
+```{r}
+starwars %>% 
+  select(name, height, sex, homeworld)
+```
+
+**Try it out!**
+
+Now try to *include one additional variable* in your `select()` function. 
+
+First, combine the `names()` function (which lists all the variable names in a dateset) and our dataset, `starwars`.
+
+```{r}
+
+```
+
+Then, add a new variable to the code below after percentage_earned, being careful to type the new variable name as it appears in the dataset. 
+
+When you're ready, click the green arrow to view the result.
+
+```{r}
+starwars %>% 
+  select(name, height, sex, homeworld, )
+```
+
+## Filtering variables
+
+Next, let's explore filtering variables. That is, the `filter()` function allows us to only view observations of a variable when the parameters we define are met.
+
+```{r}
+starwars %>% 
+  filter(sex == "female")
+```
+
+What do you think will happen if we add another condition to the `filter()` statement?
+
+**Try it out!**
+
+Be sure to run the result to see whether `filter()` did what you think it should do.
+
+```{r}
+starwars %>% 
+  filter(sex == "female",
+         height > 172)
+```
+
+Perhaps you remember from looking the `starwars` data a moment ago that Luke Skywalker's heights is 172. What, then, can you conclude from the data you've just filtered?
+
+## Creating a plot with {ggplot2}
+
+What do you think this code will do?
+
+```{r}
+starwars %>% 
+  ggplot(aes(x = height)) +
+  geom_histogram()
+```
+
+**Try it out!**
+
+Now, add `mass` to the code below as the variable that will correspond to the *y*-axis. 
+
+Notice that instead of using `geom_density()`, we're using `geom_point()`. What do you think this will create?
+
+Be sure to run the code chunk to see the result.
+
+```{r}
+starwars %>% 
+  ggplot(aes(x = height, y = mass)) +
+  geom_point()
+```
+
+**What do you notice about this plot? What do you wonder?**
+
+Which Star Wars character do you think is represented by that outlier point?
+
+---
+
+## Rendering this document to a PDF report 
+
+- Add your name as the author at the very top of this document.
+- Click "Knit" and check out the result!
+
+---
+
+## Visualizing a larger dataset (leap challenge)
+
+- Can you filter or select variables from the `mpg` (automobile fuel economy, or miles-per-gallon) dataset below?
+- Can you select a smaller number of variables from the `mpg` dataset below?
+
+If you add to this code, change the chunk option `eval = FALSE` to `eval = TRUE`! Then, hit "Knit" again to recreate your PDF report with this new information.
+
+```{r, eval = FALSE}
+mpg
+```
