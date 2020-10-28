@@ -43,7 +43,7 @@ class: inverse, center, middle
 
 - Assistant Professor, Information Communication Technology, University of Kentucky
 - https://spencergreenhalgh.com
-- Twitter:[@spgreenhalgh](https://twitter.com/spgreenhalgh)
+- Twitter: [@spgreenhalgh](https://twitter.com/spgreenhalgh)
 
 --
 
@@ -168,7 +168,7 @@ R + RStudio locally on your computer
 
 --
 
-- From here, you can write and run R code exactly as your would through RStudio on your computer.
+- From here, you can write and run R code exactly as you would through RStudio on your computer.
 
 ---
 
