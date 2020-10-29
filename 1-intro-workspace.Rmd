@@ -1,10 +1,10 @@
 ---
-title: "Part 1: Introduction to R - Demo Doc"
+title: "Part 1: RStudio Cloud Workspace for Introduction to R"
 author: 
 output: pdf_document
 ---
 
-## Loading, setting up 
+## Loading, setting up
 
 To get started, let's load the {tidytags} package. Click the green arrow at the top right of the "code chunk" below:
 

@@ -62,10 +62,10 @@ https://bretsw.github.io/tidytags/
 
 # Try it out!
 
-Let's hop over to the **Demo Doc for Part 2**!
+Let's hop over to the **Workspace for Part 2**!
 
 - [Working in RStudio Cloud](https://rstudio.cloud/project/1820768)
-- [Working locally](2-workflow-demo-doc.Rmd)
+- [Working locally](2-workflow-workspace.Rmd)
 
 ---
 

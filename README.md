@@ -13,22 +13,16 @@ Friday, October 30, 2020
 
 ## Homebase
 
-  - **Website:** <https://bretsw.github.io/aect20-workshop>
-  - **Workspace:** <https://rstudio.cloud/project/1820768>
-  - **Repository** with all files for today’s workshop:
-    <https://github.com/bretsw/aect20-workshop>
-  - **{tidytags} Documentation:** <https://bretsw.github.io/tidytags>
+  - **Workshop website:** <https://bretsw.github.io/aect20-workshop>
+  - **RStudio Cloud workspace:** <https://rstudio.cloud/project/1820768>
+  - **tidytags R package:** <https://bretsw.github.io/tidytags>
 
 ## Agenda
 
   - **Part 1: Introduction to R**
       - Slides: [Part 1 - Setup](1-intro-slides.html)
-      - Demo Doc:
-        [1-intro-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
   - **Part 2: Twitter Research Workflow**
       - Slides: [Part 2 - Workflow](2-workflow-slides.html)
-      - Demo Doc:
-        [2-workflow-demo-doc.Rmd](https://rstudio.cloud/project/1820768)
 
 ## Need help? Reach out\!
 

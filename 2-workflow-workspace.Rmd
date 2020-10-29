@@ -1,5 +1,5 @@
 ---
-title: "Part 2: Twitter Research Workflow - Demo Doc"
+title: "Part 2: RStudio Cloud Workspace for Twitter Research Workflow"
 author: 
 output: html_document
 ---
@@ -57,7 +57,7 @@ For help setting up your own TAGS tracker, see the [Getting started with tidytag
 
 ### Look at an #AECT19 TAGS tracker
 
-In this demo doc, we will analyze a TAGS tracker that has been collecting tweets associated with the [Association for Educational Communications & Technology](https://aect.org/) (AECT) 2019 convention since September 30, 2019. 
+In this workspace, we will analyze a TAGS tracker that has been collecting tweets associated with the [Association for Educational Communications & Technology](https://aect.org/) (AECT) 2019 convention since September 30, 2019. 
 
 As of October 25, 2020, this tracker had collected **2,564 tweets**. This tracker is still active today.
 

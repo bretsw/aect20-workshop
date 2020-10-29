@@ -1,8 +1,8 @@
 ---
 title: "Simple Collection and Powerful Analysis of Twitter Data Using R"
-subtitle: "#AECT20 workshop"
 author: "K. Bret Staudt Willet, Spencer P. Greenhalgh, & Joshua M. Rosenberg"
 date: "October 30, 2020"
+subtitle: '#AECT20 workshop'
 ---
 
 ```{r setup, include=FALSE}
@@ -28,7 +28,6 @@ knitr::include_graphics("img/construction.jpg")
 ```{r child="chunks/help.Rmd"} 
 ```
 
-## Workshop Description
+## Workshop GitHub Repository
 
-```{r child="chunks/abstract.Rmd"} 
-```
+If you would like to view all the files and source code for this workshop, everything is available at https://github.com/bretsw/aect20-workshop
